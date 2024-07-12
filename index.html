@@ -1,14 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Nguyen website</title>
 </head>
+
 <body>
-    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Nguyen Website</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Trang chủ <span class="sr-only">(Hiện Tại)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Mua</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Bán</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Thảo Luận</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Đăng Tải</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                Website giao dịch đồ vật 2024
+            </span>
+        </div>
+    </nav>
+    <div class="banner">
+        <img src="banner.jpg" alt="">
+    </div>
+    <div class="home">
+        <p>Danh mục sản phẩm</p>
+        <div class="option">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Đồ ăn</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected>Chọn</option>
+                    <option value="1">Cơm</option>
+                    <option value="2">Mỳ</option>
+                    <option value="3">Bún</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Đồ sử dụng</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected>Chọn</option>
+                    <option value="1">Áo</option>
+                    <option value="2">Quần</option>
+                    <option value="3">Đồng Hồ</option>
+                </select>
+            </div>
+        </div>
+        <div class="product">
+        </div>
+    </div>
 </body>
+
 </html>
 <style>
-    
+    * {
+        padding: 0;
+        margin: 0
+    }
+
+    .bg-light {
+        background-color: #79bcff !important
+    }
+
+    .banner img {
+        padding: 5px;
+        width: 100vw;
+        height: 50vh;
+        overflow: hidden;
+    }
+
+    .home p {
+        text-align: center;
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    .option {
+        display: flex;
+    }
+
+    .option .input-group {
+        margin-left: 10px;
+    }
+
+    .option .input-group {
+        width: 20%
+    }
+
+    .card-title {
+        display: flex;
+        justify-content: center;
+    }
+
+    .card-body a {
+        display: flex;
+        justify-content: center;
+    }
+
+    .product {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .product .card {
+        width: 10vw;
+        margin-bottom: 20px;
+    }
 </style>
+<script>
+    // Mảng dữ liệu sản phẩm
+    const products = [
+        {
+            imageSrc: "logo.png",
+            title: "Áo khoác đẹp",
+            description: "Thời trang mùa đông",
+            buttonText: "Mua Ngay"
+        },
+        {
+            imageSrc: "logo.png",
+            title: "Quần jeans nam",
+            description: "Phong cách trẻ trung",
+            buttonText: "Mua Ngay"
+        },
+        {
+            imageSrc: "logo.png",
+            title: "Giày thể thao",
+            description: "Dành cho người yêu thể thao",
+            buttonText: "Mua Ngay"
+        },
+        {
+            imageSrc: "logo.png",
+            title: "Giày thể thao",
+            description: "Dành cho người yêu thể thao",
+            buttonText: "Mua Ngay"
+        },
+        {
+            imageSrc: "logo.png",
+            title: "Giày thể thao",
+            description: "Dành cho người yêu thể thao",
+            buttonText: "Mua Ngay"
+        },
+        {
+            imageSrc: "logo.png",
+            title: "Giày thể thao",
+            description: "Dành cho người yêu thể thao",
+            buttonText: "Mua Ngay"
+        },
+        {
+            imageSrc: "logo.png",
+            title: "Giày thể thao",
+            description: "Dành cho người yêu thể thao",
+            buttonText: "Mua Ngay"
+        }
+    ];
+
+    // Đối tượng chứa danh sách sản phẩm
+    const productList = document.querySelector('.product');
+
+    // Hàm để tạo HTML cho mỗi sản phẩm
+    function createProductCard(product) {
+        return `
+    <div class="card" style="width: 18rem;">
+      <img src="${product.imageSrc}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${product.title}</h5>
+        <p class="card-text">${product.description}</p>
+        <a href="#" class="btn btn-primary">${product.buttonText}</a>
+      </div>
+    </div>
+  `;
+    }
+
+    // Render danh sách sản phẩm
+    function renderProductList(products) {
+        const productListHTML = products.map(product => createProductCard(product)).join('');
+        productList.innerHTML = productListHTML;
+    }
+
+    // Gọi hàm renderProductList để hiển thị danh sách sản phẩm
+    renderProductList(products);
+
+</script>
